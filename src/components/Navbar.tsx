@@ -1,4 +1,5 @@
 import Logo from '../assets/logo.png'
+import Button from './ui/Button'
 
 const Navbar = () => {
   const handleLogout = () => {
@@ -15,12 +16,9 @@ const Navbar = () => {
       </a>
 
       <div className='flex items-center pr-1 md:pr-2'>
-        <button 
-          className='py-1 px-4 md:px-6 rounded-4xl text-sm sm:text-lg md:text-xl font-medium bg-blue-50 text-blue-400 shadow-md shadow-black/20 cursor-pointer inset-shadow-[0_-2px_4px] inset-shadow-blue-900/50 hover:inset-shadow-[0_-4px_6px] hover:inset-shadow-blue-400/50 transition-all duration-200'
-          onClick={handleLogout}
-        >
+        <Button onClick={handleLogout}>
           Log Out
-        </button>
+        </Button>
       </div>
     </div>
   )
