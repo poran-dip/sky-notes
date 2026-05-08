@@ -1,4 +1,4 @@
-import { timeAgo, truncateString } from "../utils/truncateString";
+import { timeAgo, truncateString } from "@/utils/format";
 
 interface NoteProps {
   title: string;
