@@ -1,11 +1,12 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
-import './index.css'
-import App from './App.tsx'
-import NotFound from './NotFound.tsx';
+import "./index.css";
+import App from "./App.tsx";
+import NotFound from "./NotFound.tsx";
 
-createRoot(document.getElementById('root')!).render(
+// biome-ignore lint: vite scaffold
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
@@ -14,4 +15,4 @@ createRoot(document.getElementById('root')!).render(
       </Routes>
     </BrowserRouter>
   </StrictMode>,
-)
+);
