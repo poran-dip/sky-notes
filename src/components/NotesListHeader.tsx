@@ -1,6 +1,16 @@
 import SearchIcon from "@/assets/search.png";
 
-const NotesListHeader = () => {
+interface NotesListHeaderProps {
+  addNote: () => void;
+  searchTerm: string;
+  onSearchChange: (term: string) => void;
+}
+
+const NotesListHeader = ({
+  addNote,
+  searchTerm,
+  onSearchChange,
+}: NotesListHeaderProps) => {
   return (
     <div className="h-12 md:h-16 w-full px-5 md:px-8 flex items-center justify-between border-b-2 border-blue-100/40">
       <div className="relative w-120">
@@ -11,12 +21,20 @@ const NotesListHeader = () => {
         />
         <input
           id="search"
+          value={searchTerm}
+          onChange={(e) => onSearchChange(e.target.value)}
           className="w-full h-6 md:h-8 rounded-2xl border-2 pl-6 md:pl-8 pr-2 border-blue-100/70 focus:border-blue-50/90 focus:outline-0 text-white placeholder-blue-100/70"
           placeholder="Search..."
         />
       </div>
 
-      <div></div>
+      <button
+        type="button"
+        onClick={addNote}
+        className="text-white/80 hover:text-white text-xl font-light transition-colors cursor-pointer"
+      >
+        + New
+      </button>
     </div>
   );
 };
