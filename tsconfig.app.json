@@ -3,7 +3,7 @@
     "target": "es2025",
     "useDefineForClassFields": true,
     "lib": ["es2025", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
+    "module": "esnext",
     "types": ["vite/client"],
     "skipLibCheck": true,
 
@@ -21,7 +21,11 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2025",
     "lib": ["es2025"],
-    "module": "ESNext",
+    "module": "esnext",
     "types": ["node"],
     "skipLibCheck": true,
 
