@@ -6,12 +6,11 @@ import NotesListHeader from "./NotesListHeader";
 const NotesList = () => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [, tick] = useState(0);
 
   const addNote = () => {
-    console.log("addNote called");
     const newNote: Note = {
       id: crypto.randomUUID(),
-      type: "text",
       updatedAt: new Date().toISOString(),
     };
     setNotes((prev) => {
@@ -21,6 +20,14 @@ const NotesList = () => {
     });
     console.log(notes);
     console.log(filteredNotes);
+  };
+
+  const updateNote = (updated: Note) => {
+    setNotes((prev) => {
+      const next = prev.map((n) => (n.id === updated.id ? updated : n));
+      localStorage.setItem("sky-notes", JSON.stringify(next));
+      return next;
+    });
   };
 
   const deleteNote = (id: string) => {
@@ -37,8 +44,7 @@ const NotesList = () => {
       : notes.filter(
           (n) =>
             n.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            (typeof n.content === "string" &&
-              n.content.toLowerCase().includes(searchTerm.toLowerCase())),
+            n.content?.toLowerCase().includes(searchTerm.toLowerCase()),
         );
 
   useEffect(() => {
@@ -49,13 +55,10 @@ const NotesList = () => {
     }
   }, []);
 
-  const updateNote = (updated: Note) => {
-    setNotes((prev) => {
-      const next = prev.map((n) => (n.id === updated.id ? updated : n));
-      localStorage.setItem("sky-notes", JSON.stringify(next));
-      return next;
-    });
-  };
+  useEffect(() => {
+    const interval = setInterval(() => tick(n => n + 1), 15000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="h-screen px-2 sm:px-8 md:px-10 lg:px-16 pt-14 sm:pt-18 md:pt-24 pb-2 sm:pb-4 md:pb-8">
