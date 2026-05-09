@@ -27,14 +27,14 @@ const SortControls = ({ sortKey, onSortKeyChange }: SortControlsProps) => {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="h-6 md:h-8 flex items-center gap-1 rounded-2xl border-2 border-blue-100/70 px-2 md:px-3 text-white/70 hover:bg-white/20 transition-colors text-xs font-bold cursor-pointer"
+        className="h-6 md:h-8 flex items-center gap-1 rounded-2xl border-2 border-sky-border px-2 md:px-3 text-sky-text-muted hover:bg-sky-card-bg transition-colors text-xs font-bold cursor-pointer"
       >
         Sort
         <ChevronDown className="h-3 w-3" />
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1 z-20 w-40 bg-blue-100 rounded-xl shadow-lg border border-blue-100 flex flex-col overflow-hidden">
+        <div className="absolute right-0 top-full mt-1 z-20 w-40 bg-sky-dropdown-bg rounded-xl shadow-lg border border-sky-border flex flex-col overflow-hidden">
           <button
             type="button"
             key={"newest"}
@@ -43,7 +43,7 @@ const SortControls = ({ sortKey, onSortKeyChange }: SortControlsProps) => {
               setOpen(false);
             }}
             className={`px-3 py-2 font-bold text-xs text-left transition-colors cursor-pointer
-                ${sortKey === "newest" ? "text-blue-800 bg-blue-50" : "text-blue-600 hover:bg-blue-50"}`}
+                ${sortKey === "newest" ? "text-sky-text bg-sky-dropdown-hover" : "text-sky-text-muted hover:bg-sky-dropdown-hover"}`}
           >
             Newest
           </button>
@@ -55,7 +55,7 @@ const SortControls = ({ sortKey, onSortKeyChange }: SortControlsProps) => {
               setOpen(false);
             }}
             className={`px-3 py-2 font-bold text-xs text-left transition-colors cursor-pointer
-                ${sortKey === "oldest" ? "text-blue-800 bg-blue-50" : "text-blue-600 hover:bg-blue-50"}`}
+                ${sortKey === "oldest" ? "text-sky-text bg-sky-dropdown-hover" : "text-sky-text-muted hover:bg-sky-dropdown-hover"}`}
           >
             Oldest
           </button>

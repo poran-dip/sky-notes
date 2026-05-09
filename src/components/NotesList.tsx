@@ -75,7 +75,7 @@ const NotesList = () => {
 
   return (
     <div className="h-screen px-2 sm:px-8 md:px-10 lg:px-16 pt-14 sm:pt-18 md:pt-24 pb-2 sm:pb-4 md:pb-8">
-      <div className="bg-white/30 shadow-lg shadow-black/30 h-full w-full rounded-2xl sm:rounded-3xl md:rounded-4xl flex flex-col overflow-hidden">
+      <div className="bg-sky-card-bg shadow-lg shadow-black/30 h-full w-full rounded-2xl sm:rounded-3xl md:rounded-4xl flex flex-col overflow-hidden">
         <NotesListHeader
           addNote={addNote}
           searchTerm={searchTerm}
@@ -86,13 +86,15 @@ const NotesList = () => {
         <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar flex flex-col gap-4 p-4">
           {searchTerm && filteredNotes.length === 0 ? (
             <div className="relative z-5 flex-1 flex items-center justify-center text-center">
-              <p className="text-lg font-bold text-blue-500/70">
+              <p className="text-lg font-bold text-sky-text-muted">
                 No notes found for "{searchTerm}"
               </p>
             </div>
           ) : notes.length === 0 ? (
             <div className="relative z-5 flex-1 flex flex-col items-center justify-center gap-3 text-center">
-              <p className="text-lg font-bold text-blue-500/70">No notes yet</p>
+              <p className="text-lg font-bold text-sky-text-muted">
+                No notes yet
+              </p>
               <Button onClick={() => addNote("", "")}>New</Button>
             </div>
           ) : (

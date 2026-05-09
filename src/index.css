@@ -8,3 +8,32 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@theme {
+  --animate-sky-fade-in: sky-fade-in 1.5s ease-in-out forwards;
+
+  @keyframes sky-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@theme inline {
+  --color-sky-text: var(--sky-text);
+  --color-sky-text-muted: var(--sky-text-muted);
+  --color-sky-border: var(--sky-border);
+  --color-sky-card-bg: var(--sky-card-bg);
+  --color-sky-card-footer: var(--sky-card-footer);
+  --color-sky-dropdown-bg: var(--sky-dropdown-bg);
+  --color-sky-dropdown-hover: var(--sky-dropdown-hover);
+  --color-sky-placeholder: var(--sky-placeholder);
+  --color-sky-danger: var(--sky-danger);
+  --color-sky-danger-hover: var(--sky-danger-hover);
+  --color-sky-button-bg: var(--sky-button-bg);
+  --color-sky-button-text: var(--sky-button-text);
+  --color-sky-button-shadow: var(--sky-button-shadow);
+}
