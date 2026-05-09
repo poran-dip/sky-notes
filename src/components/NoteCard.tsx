@@ -10,7 +10,7 @@ interface NoteCardProps {
 }
 
 const NoteCard = ({ note, onUpdate, onDelete }: NoteCardProps) => {
-  const [title, setTitle] = useState(note.title ?? "");
+  const [title, setTitle] = useState<string>(note.title ?? "");
   const [content, setContent] = useState<string>(note.content ?? "");
   const [updatedAt, setUpdatedAt] = useState<Date>(new Date(note.updatedAt));
 
@@ -55,6 +55,7 @@ const NoteCard = ({ note, onUpdate, onDelete }: NoteCardProps) => {
           ref={titleRef}
           value={title}
           placeholder="Title"
+          spellCheck={false}
           onChange={(e) => {
             setTitle(e.target.value);
             hasChanges.current = true;
@@ -68,6 +69,7 @@ const NoteCard = ({ note, onUpdate, onDelete }: NoteCardProps) => {
           ref={contentRef}
           value={content}
           placeholder="Content"
+          spellCheck={false}
           onChange={(e) => {
             setContent(e.target.value);
             hasChanges.current = true;

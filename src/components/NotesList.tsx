@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Note } from "@/types/notes";
 import NoteCard from "./NoteCard";
 import NotesListHeader from "./NotesListHeader";
+import Button from "./ui/Button";
 
 const NotesList = () => {
   const [notes, setNotes] = useState<Note[]>([]);
@@ -18,8 +19,6 @@ const NotesList = () => {
       localStorage.setItem("sky-notes", JSON.stringify(next));
       return next;
     });
-    console.log(notes);
-    console.log(filteredNotes);
   };
 
   const updateNote = (updated: Note) => {
@@ -56,7 +55,7 @@ const NotesList = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => tick(n => n + 1), 15000);
+    const interval = setInterval(() => tick((n) => n + 1), 15000);
     return () => clearInterval(interval);
   }, []);
 
@@ -69,14 +68,27 @@ const NotesList = () => {
           onSearchChange={setSearchTerm}
         />
         <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar flex flex-col gap-4 p-4">
-          {filteredNotes.map((note) => (
-            <NoteCard
-              key={note.id}
-              note={note}
-              onUpdate={updateNote}
-              onDelete={deleteNote}
-            />
-          ))}
+          {searchTerm && filteredNotes.length === 0 ? (
+            <div className="relative z-5 flex-1 flex items-center justify-center text-center">
+              <p className="text-lg font-bold text-blue-500/70">
+                No notes found for "{searchTerm}"
+              </p>
+            </div>
+          ) : notes.length === 0 ? (
+            <div className="relative z-5 flex-1 flex flex-col items-center justify-center gap-3 text-center">
+              <p className="text-lg font-bold text-blue-500/70">No notes yet</p>
+              <Button onClick={addNote}>New</Button>
+            </div>
+          ) : (
+            filteredNotes.map((note) => (
+              <NoteCard
+                key={note.id}
+                note={note}
+                onUpdate={updateNote}
+                onDelete={deleteNote}
+              />
+            ))
+          )}
         </div>
       </div>
     </div>
