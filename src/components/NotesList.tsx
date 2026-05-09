@@ -83,7 +83,7 @@ const NotesList = () => {
           sortKey={sortKey}
           onSortKeyChange={handleSortKeyChange}
         />
-        <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar flex flex-col gap-4 p-4">
+        <div className="flex-1 min-h-0 overflow-y-auto styled-scrollbar flex flex-col gap-4 p-4">
           {searchTerm && filteredNotes.length === 0 ? (
             <div className="relative z-5 flex-1 flex items-center justify-center text-center">
               <p className="text-lg font-bold text-sky-text-muted">

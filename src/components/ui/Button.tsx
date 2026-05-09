@@ -14,7 +14,7 @@ const buttonSizes = {
 
 const buttonVariants = {
   primary:
-    "bg-sky-button-bg text-sky-button-text shadow-md shadow-sky-button-shadow inset-shadow-[0_-2px_4px] inset-shadow-black/20 hover:inset-shadow-[0_-4px_6px] hover:inset-shadow-black/10",
+    "bg-sky-button-bg text-sky-button-text shadow-md shadow-sky-button-shadow inset-shadow-[0_-2px_4px] inset-shadow-sky-text/50 hover:inset-shadow-[0_-4px_6px] hover:inset-shadow-sky-text-muted/30",
 };
 
 const Button = ({

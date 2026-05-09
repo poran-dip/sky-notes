@@ -1,12 +1,23 @@
 @import "tailwindcss";
 
-@utility no-scrollbar {
-  &::-webkit-scrollbar {
-    display: none;
+@utility styled-scrollbar {
+  @supports (scrollbar-width: auto) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--sky-placeholder) transparent;
   }
 
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  @supports selector(::-webkit-scrollbar) {
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--sky-placeholder);
+      border-radius: 999px;
+    }
+  }
 }
 
 @theme {

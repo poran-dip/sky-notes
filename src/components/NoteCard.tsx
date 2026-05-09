@@ -78,7 +78,7 @@ const NoteCard = ({
   );
 
   return (
-    <div className="relative z-10 flex flex-col justify-between border border-sky-border bg-sky-card-bg shadow-lg shadow-black/20 rounded-2xl hover:-translate-y-1 transition-all duration-200">
+    <div className="relative z-10 flex flex-col justify-between border border-sky-border bg-sky-card-bg shadow-lg shadow-black/20 rounded-2xl hover:-translate-y-0.5 transition-all duration-200">
       <div className="p-1 md:p-2 flex flex-col gap-1">
         <textarea
           id={`${note.id}-title`}
