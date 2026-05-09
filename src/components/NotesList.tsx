@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Note } from "@/types/notes";
 import NoteCard from "./NoteCard";
 import NotesListHeader from "./NotesListHeader";
+import type { SortKey } from "./SortControls";
 import Button from "./ui/Button";
 
 const NotesList = () => {
@@ -9,6 +10,14 @@ const NotesList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [, tick] = useState(0);
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
+  const [sortKey, setSortKey] = useState<SortKey>(() => {
+    return (localStorage.getItem("sky-notes-sort-key") as SortKey) ?? "newest";
+  });
+
+  const handleSortKeyChange = (key: SortKey) => {
+    setSortKey(key);
+    localStorage.setItem("sky-notes-sort-key", key);
+  };
 
   const addNote = (title?: string, content?: string) => {
     const newNote: Note = {
@@ -40,10 +49,12 @@ const NotesList = () => {
     });
   };
 
+  const sortedNotes = sortKey === "oldest" ? [...notes].reverse() : notes;
+
   const filteredNotes =
     searchTerm === ""
-      ? notes
-      : notes.filter(
+      ? sortedNotes
+      : sortedNotes.filter(
           (n) =>
             n.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
             n.content?.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -69,6 +80,8 @@ const NotesList = () => {
           addNote={addNote}
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
+          sortKey={sortKey}
+          onSortKeyChange={handleSortKeyChange}
         />
         <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar flex flex-col gap-4 p-4">
           {searchTerm && filteredNotes.length === 0 ? (

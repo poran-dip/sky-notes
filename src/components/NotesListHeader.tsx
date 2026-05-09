@@ -1,16 +1,21 @@
 import { Search } from "lucide-react";
+import SortControls, { type SortKey } from "./SortControls";
 import Button from "./ui/Button";
 
 interface NotesListHeaderProps {
   addNote: () => void;
   searchTerm: string;
   onSearchChange: (term: string) => void;
+  sortKey: SortKey;
+  onSortKeyChange: (key: SortKey) => void;
 }
 
 const NotesListHeader = ({
   addNote,
   searchTerm,
   onSearchChange,
+  sortKey,
+  onSortKeyChange,
 }: NotesListHeaderProps) => {
   return (
     <div className="h-12 md:h-16 w-full px-5 md:px-8 flex items-center justify-between gap-2 border-b-2 border-blue-100/40">
@@ -25,9 +30,12 @@ const NotesListHeader = ({
         />
       </div>
 
-      <Button size="sm" onClick={() => addNote()}>
-        New
-      </Button>
+      <div className="flex items-center gap-2 shrink-0">
+        <SortControls sortKey={sortKey} onSortKeyChange={onSortKeyChange} />
+        <Button size="sm" onClick={() => addNote()}>
+          New
+        </Button>
+      </div>
     </div>
   );
 };
