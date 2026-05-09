@@ -8,10 +8,13 @@ const NotesList = () => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [, tick] = useState(0);
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
 
-  const addNote = () => {
+  const addNote = (title?: string, content?: string) => {
     const newNote: Note = {
       id: crypto.randomUUID(),
+      title,
+      content,
       updatedAt: new Date().toISOString(),
     };
     setNotes((prev) => {
@@ -77,7 +80,7 @@ const NotesList = () => {
           ) : notes.length === 0 ? (
             <div className="relative z-5 flex-1 flex flex-col items-center justify-center gap-3 text-center">
               <p className="text-lg font-bold text-blue-500/70">No notes yet</p>
-              <Button onClick={addNote}>New</Button>
+              <Button onClick={() => addNote("", "")}>New</Button>
             </div>
           ) : (
             filteredNotes.map((note) => (
@@ -86,6 +89,10 @@ const NotesList = () => {
                 note={note}
                 onUpdate={updateNote}
                 onDelete={deleteNote}
+                onDuplicate={() => addNote(note.title, note.content)}
+                isMenuOpen={openMenuId === note.id}
+                onMenuOpen={() => setOpenMenuId(note.id)}
+                onMenuClose={() => setOpenMenuId(null)}
               />
             ))
           )}

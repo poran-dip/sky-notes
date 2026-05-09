@@ -25,7 +25,7 @@ const NotesListHeader = ({
         />
       </div>
 
-      <Button size="sm" onClick={addNote}>
+      <Button size="sm" onClick={() => addNote()}>
         New
       </Button>
     </div>
