@@ -4,7 +4,7 @@ A minimal note-taking app with local browser persistence and a cozy sky-themed U
 
 ## Features
 
-- Create, edit, and delete notes or to-dos
+- Create, edit, and delete notes
 - Search notes by title or content
 - Automatic sky theme rotation based on the time of day
 - Local-first persistence using browser storage
