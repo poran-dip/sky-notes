@@ -11,7 +11,10 @@ const NotFound = () => {
         404
       </h1>
 
-      <div className="min-h-screen px-2 sm:px-4 flex flex-col items-center justify-center gap-4 sm:gap-6">
+      <main
+        id="main-content"
+        className="min-h-screen px-2 sm:px-4 flex flex-col items-center justify-center gap-4 sm:gap-6"
+      >
         <p className="mt-72 sm:mt-40 relative z-10 text-3xl sm:text-4xl md:text-6xl text-center font-extrabold tracking-wide text-blue-400/90">
           that page doesn't exist.
         </p>
@@ -19,7 +22,7 @@ const NotFound = () => {
         <Button className="relative z-10" onClick={() => navigate("/")}>
           Back to Home
         </Button>
-      </div>
+      </main>
     </Layout>
   );
 };

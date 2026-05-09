@@ -120,6 +120,7 @@ const NoteCard = ({
           <button
             type="button"
             ref={menuButtonRef}
+            aria-label="Note options"
             onClick={() => {
               if (isMenuOpen) {
                 onMenuClose();

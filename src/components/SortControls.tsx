@@ -27,7 +27,7 @@ const SortControls = ({ sortKey, onSortKeyChange }: SortControlsProps) => {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="h-6 md:h-8 flex items-center gap-1 rounded-2xl border border-blue-100/70 px-2 md:px-3 text-white/70 hover:bg-white/20 transition-colors text-xs font-bold cursor-pointer"
+        className="h-6 md:h-8 flex items-center gap-1 rounded-2xl border-2 border-blue-100/70 px-2 md:px-3 text-white/70 hover:bg-white/20 transition-colors text-xs font-bold cursor-pointer"
       >
         Sort
         <ChevronDown className="h-3 w-3" />

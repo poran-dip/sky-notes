@@ -4,7 +4,9 @@ import NotesList from "@/components/NotesList";
 export default function App() {
   return (
     <Layout>
-      <NotesList />
+      <main id="main-content">
+        <NotesList />
+      </main>
     </Layout>
   );
 }
