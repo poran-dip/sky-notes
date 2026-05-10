@@ -221,7 +221,7 @@ function getSlotForHour(hour: number): SkyThemeSlot {
   );
 }
 
-export function getImagePath(theme: SkyTheme): ImagePath {
+function getImagePath(theme: SkyTheme): ImagePath {
   const index = SKY_SLOTS.findIndex((s) => s.theme === theme) + 1;
 
   return {

@@ -1,10 +1,11 @@
-import { StrictMode } from "react";
+import { lazy, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import "./index.css";
 import { SkyThemeProvider } from "@/contexts/SkyThemeContext.tsx";
-import App from "./App.tsx";
-import NotFound from "./NotFound.tsx";
+
+const App = lazy(() => import("./App.tsx"));
+const NotFound = lazy(() => import("./NotFound.tsx"));
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js");
