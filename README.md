@@ -2,6 +2,15 @@
 
 Your notes, under an ever-changing sky. SkyNotes is a minimal, local-first app that shifts through atmospheric themes as the day unfolds — no accounts, no servers, just you and your thoughts.
 
+Try it at **[skynotebook.vercel.app](https://skynotebook.vercel.app)**.
+
+![SkyNotes Screenshot](public/screenshot-wide.jpg)
+
+[![Performance](https://img.shields.io/badge/Lighthouse-Performance%20100-success?logo=lighthouse&logoColor=white)](https://skynotebook.vercel.app)
+[![Accessibility](https://img.shields.io/badge/Lighthouse-Accessibility%20100-success?logo=lighthouse&logoColor=white)](https://skynotebook.vercel.app)
+[![Best Practices](https://img.shields.io/badge/Lighthouse-Best%20Practices%20100-success?logo=lighthouse&logoColor=white)](https://skynotebook.vercel.app)
+[![SEO](https://img.shields.io/badge/Lighthouse-SEO%20100-success?logo=lighthouse&logoColor=white)](https://skynotebook.vercel.app)
+
 ## Features
 
 ### Notes
@@ -35,13 +44,13 @@ Background images are served as WebP with JPEG fallback for broad browser compat
 ### PWA & Offline
 
 - Fully installable as a Progressive Web App (PWA) with rich install UI (screenshots included for both desktop and mobile)
-- Full offline support — all 8 sky backgrounds, icons, and app assets are cached by the service worker after first load
+- Full offline support — all sky backgrounds, icons, and app assets are cached by the service worker after first load
 - **Web Share Target** — share text, URLs, or titles from any other app directly into SkyNotes; a new note is created automatically
 
 ### Accessibility
 
 - Skip to content link for keyboard and screen reader users
-- Semantic landmark regions (`main`, etc.)
+- Semantic landmark regions (`main`, `nav`, `header`, `article`)
 - ARIA labels on icon-only controls
 
 ## Tech Stack
@@ -54,3 +63,14 @@ Background images are served as WebP with JPEG fallback for broad browser compat
 - Service Worker for offline caching and Web Share Target
 
 No accounts, analytics, or servers — all data stays locally in your browser.
+
+## Getting Started
+
+```bash
+git clone https://github.com/poran-dip/sky-notes.git
+cd sky-notes
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
