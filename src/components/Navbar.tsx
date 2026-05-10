@@ -10,6 +10,8 @@ const Navbar = () => {
             src="/logo.png"
             fetchPriority="high"
             className="h-8 sm:h-10 md:h-12 w-auto"
+            width={1500}
+            height={1500}
           />
           <p className="text-lg sm:text-xl md:text-2xl font-black text-blue-50">
             SkyNotes
