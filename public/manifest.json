@@ -1,7 +1,7 @@
 {
-  "name": "Sky Notes",
+  "name": "SkyNotes",
   "short_name": "SkyNotes",
-  "description": "SkyNotes — a minimal, local-first note-taking app with a beautiful sky theme.",
+  "description": "Your notes, under an ever-changing sky. SkyNotes is a minimal, local-first app that shifts through atmospheric themes as the day unfolds — no accounts, no servers, just you and your thoughts.",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -32,13 +32,13 @@
     {
       "src": "/screenshot-wide.jpg",
       "sizes": "1920x868",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "wide"
     },
     {
       "src": "/screenshot-narrow.jpg",
       "sizes": "426x759",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow"
     }
   ],
@@ -55,5 +55,6 @@
   "theme_color": "#80a1de",
   "background_color": "#80a1de",
   "display": "standalone",
-  "start_url": "/"
+  "start_url": "/",
+  "scope": "/"
 }

@@ -1,6 +1,6 @@
 # SkyNotes
 
-A minimal, local-first note-taking app with a cozy sky-themed UI that shifts with the time of day.
+Your notes, under an ever-changing sky. SkyNotes is a minimal, local-first app that shifts through atmospheric themes as the day unfolds — no accounts, no servers, just you and your thoughts.
 
 ## Features
 

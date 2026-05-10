@@ -40,7 +40,7 @@ const Layout = ({ children }: LayoutProps) => {
 
       <Navbar />
 
-      {children}
+      <main id="main-content">{children}</main>
     </div>
   );
 };

@@ -78,10 +78,11 @@ const NoteCard = ({
   );
 
   return (
-    <div className="relative z-10 flex flex-col justify-between border border-sky-border bg-sky-card-bg shadow-lg shadow-black/20 rounded-2xl hover:-translate-y-0.5 transition-all duration-200">
+    <article className="relative z-10 flex flex-col justify-between border border-sky-border bg-sky-card-bg shadow-lg shadow-black/20 rounded-2xl hover:-translate-y-0.5 transition-all duration-200">
       <div className="p-1 md:p-2 flex flex-col gap-1">
         <textarea
           id={`${note.id}-title`}
+          aria-label="Note title"
           ref={titleRef}
           value={title}
           placeholder="Title"
@@ -97,6 +98,7 @@ const NoteCard = ({
 
         <textarea
           id={`${note.id}-content`}
+          aria-label="Note content"
           ref={contentRef}
           value={content}
           placeholder="Content"
@@ -112,15 +114,20 @@ const NoteCard = ({
       </div>
 
       <div className="shrink-0 w-full px-2 py-1 flex items-center justify-between gap-2 bg-sky-card-footer rounded-b-2xl">
-        <p className="text-xs md:text-sm text-sky-text-muted">
+        <time
+          dateTime={updatedAt.toISOString()}
+          className="text-xs md:text-sm text-sky-text-muted"
+        >
           {timeAgo(updatedAt)}
-        </p>
+        </time>
 
         <div className="relative">
           <button
             type="button"
             ref={menuButtonRef}
             aria-label="Note options"
+            aria-haspopup="menu"
+            aria-expanded={isMenuOpen}
             onClick={() => {
               if (isMenuOpen) {
                 onMenuClose();
@@ -152,12 +159,14 @@ const NoteCard = ({
             menuPos &&
             createPortal(
               <div
+                role="menu"
                 ref={menuRef}
                 style={{ top: menuPos.top, right: menuPos.right }}
                 className="fixed right-0 mb-1 w-36 bg-sky-dropdown-bg rounded-xl shadow-lg border border-sky-border flex flex-col overflow-hidden z-20"
               >
                 <button
                   type="button"
+                  role="menuitem"
                   onClick={() => {
                     navigator.clipboard.writeText(`${title}\n${content}`);
                     onMenuClose();
@@ -168,6 +177,7 @@ const NoteCard = ({
                 </button>
                 <button
                   type="button"
+                  role="menuitem"
                   onClick={() => {
                     navigator.share?.({ title, text: content });
                     onMenuClose();
@@ -178,6 +188,7 @@ const NoteCard = ({
                 </button>
                 <button
                   type="button"
+                  role="menuitem"
                   onClick={() => {
                     onDuplicate();
                     onMenuClose();
@@ -188,6 +199,7 @@ const NoteCard = ({
                 </button>
                 <button
                   type="button"
+                  role="menuitem"
                   onClick={() => {
                     onDelete(note.id);
                     onMenuClose();
@@ -201,7 +213,7 @@ const NoteCard = ({
             )}
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

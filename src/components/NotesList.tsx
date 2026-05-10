@@ -6,7 +6,10 @@ import type { SortKey } from "./SortControls";
 import Button from "./ui/Button";
 
 const NotesList = () => {
-  const [notes, setNotes] = useState<Note[]>([]);
+  const [notes, setNotes] = useState<Note[]>(() => {
+    const stored = localStorage.getItem("sky-notes");
+    return stored ? (JSON.parse(stored) as Note[]) : [];
+  });
   const [searchTerm, setSearchTerm] = useState("");
   const [, tick] = useState(0);
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
@@ -61,14 +64,6 @@ const NotesList = () => {
         );
 
   useEffect(() => {
-    const storedNotes = localStorage.getItem("sky-notes");
-
-    if (storedNotes) {
-      setNotes(JSON.parse(storedNotes) as Note[]);
-    }
-  }, []);
-
-  useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const title = params.get("share_title") ?? "";
     const content = params.get("share_text") ?? "";
@@ -93,35 +88,42 @@ const NotesList = () => {
           sortKey={sortKey}
           onSortKeyChange={handleSortKeyChange}
         />
-        <div className="flex-1 min-h-0 overflow-y-auto styled-scrollbar flex flex-col gap-4 p-4">
+        <ul className="flex-1 min-h-0 overflow-y-auto styled-scrollbar flex flex-col gap-4 p-4">
           {searchTerm && filteredNotes.length === 0 ? (
-            <div className="relative z-5 flex-1 flex items-center justify-center text-center">
-              <p className="text-lg font-bold text-sky-text-muted">
+            <li className="relative z-5 flex-1 flex items-center justify-center text-center">
+              <p
+                role="status"
+                className="text-lg font-bold text-sky-text-muted"
+              >
                 No notes found for "{searchTerm}"
               </p>
-            </div>
+            </li>
           ) : notes.length === 0 ? (
-            <div className="relative z-5 flex-1 flex flex-col items-center justify-center gap-3 text-center">
-              <p className="text-lg font-bold text-sky-text-muted">
+            <li className="relative z-5 flex-1 flex flex-col items-center justify-center gap-3 text-center">
+              <p
+                role="status"
+                className="text-lg font-bold text-sky-text-muted"
+              >
                 No notes yet
               </p>
               <Button onClick={() => addNote("", "")}>New</Button>
-            </div>
+            </li>
           ) : (
             filteredNotes.map((note) => (
-              <NoteCard
-                key={note.id}
-                note={note}
-                onUpdate={updateNote}
-                onDelete={deleteNote}
-                onDuplicate={() => addNote(note.title, note.content)}
-                isMenuOpen={openMenuId === note.id}
-                onMenuOpen={() => setOpenMenuId(note.id)}
-                onMenuClose={() => setOpenMenuId(null)}
-              />
+              <li key={note.id}>
+                <NoteCard
+                  note={note}
+                  onUpdate={updateNote}
+                  onDelete={deleteNote}
+                  onDuplicate={() => addNote(note.title, note.content)}
+                  isMenuOpen={openMenuId === note.id}
+                  onMenuOpen={() => setOpenMenuId(note.id)}
+                  onMenuClose={() => setOpenMenuId(null)}
+                />
+              </li>
             ))
           )}
-        </div>
+        </ul>
       </div>
     </div>
   );

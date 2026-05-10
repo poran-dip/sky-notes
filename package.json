@@ -1,7 +1,21 @@
 {
   "name": "sky-notes",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Your notes, under an ever-changing sky. SkyNotes is a minimal, local-first app that shifts through atmospheric themes as the day unfolds — no accounts, no servers, just you and your thoughts.",
+  "author": {
+    "name": "Poran Dip",
+    "url": "https://porandip.vercel.app"
+  },
+  "keywords": [
+    "notes",
+    "pwa",
+    "offline",
+    "sky",
+    "calm",
+    "minimalist",
+    "productivity"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",

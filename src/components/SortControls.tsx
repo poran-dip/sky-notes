@@ -26,6 +26,9 @@ const SortControls = ({ sortKey, onSortKeyChange }: SortControlsProps) => {
     <div className="relative" ref={ref}>
       <button
         type="button"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label="Sort notes"
         onClick={() => setOpen((o) => !o)}
         className="h-6 md:h-8 flex items-center gap-1 rounded-2xl border-2 border-sky-border px-2 md:px-3 text-sky-text-muted hover:bg-sky-card-bg transition-colors text-xs font-bold cursor-pointer"
       >
@@ -34,10 +37,15 @@ const SortControls = ({ sortKey, onSortKeyChange }: SortControlsProps) => {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1 z-20 w-40 bg-sky-dropdown-bg rounded-xl shadow-lg border border-sky-border flex flex-col overflow-hidden">
+        <div
+          role="listbox"
+          aria-label="Sort order"
+          className="absolute right-0 top-full mt-1 z-20 w-40 bg-sky-dropdown-bg rounded-xl shadow-lg border border-sky-border flex flex-col overflow-hidden"
+        >
           <button
             type="button"
-            key={"newest"}
+            role="option"
+            aria-selected={sortKey === "newest"}
             onClick={() => {
               onSortKeyChange("newest");
               setOpen(false);
@@ -49,7 +57,8 @@ const SortControls = ({ sortKey, onSortKeyChange }: SortControlsProps) => {
           </button>
           <button
             type="button"
-            key={"oldest"}
+            role="option"
+            aria-selected={sortKey === "oldest"}
             onClick={() => {
               onSortKeyChange("oldest");
               setOpen(false);

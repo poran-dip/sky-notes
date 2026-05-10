@@ -1,4 +1,4 @@
-const CACHE_NAME = "skynotes-v2";
+const CACHE_NAME = "skynotes-v1.0.0";
 
 const STATIC_ASSETS = [
   "/",
@@ -6,15 +6,19 @@ const STATIC_ASSETS = [
   "/manifest.json",
   "/logo.png",
   // Sky background images (all 8 themes, both formats)
-  "/sky-images/1-golden-sunrise.jpg",
-  "/sky-images/2-bright-morning.jpg",
-  "/sky-images/3-cloudy-noon.jpg",
-  "/sky-images/4-golden-hour.jpg",
-  "/sky-images/5-blue-hour.jpg",
-  "/sky-images/6-starlit-night.jpg",
-  "/sky-images/7-milky-way-night.jpg",
-  "/sky-images/8-astronomical-dawn.jpg",
+  "/sky-images/1-milky-way-night.jpg",
+  "/sky-images/2-astronomical-dawn.jpg",
+  "/sky-images/3-golden-sunrise.jpg",
+  "/sky-images/4-bright-morning.jpg",
+  "/sky-images/5-cloudy-noon.jpg",
+  "/sky-images/6-golden-hour.jpg",
+  "/sky-images/7-blue-hour.jpg",
+  "/sky-images/8-starlit-night.jpg",
   // Icons
+  "/favicon.ico",
+  "/favicon.svg",
+  "/favicon-96x96.png",
+  "/apple-touch-icon.png",
   "/web-app-manifest-192x192.png",
   "/web-app-manifest-512x512.png",
 ];
