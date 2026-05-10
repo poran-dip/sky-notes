@@ -1,8 +1,10 @@
-const CACHE_NAME = "skynotes-v1";
+const CACHE_NAME = "skynotes-v2";
 
 const STATIC_ASSETS = [
   "/",
   "/index.html",
+  "/manifest.json",
+  "/logo.png",
   // Sky background images (all 8 themes, both formats)
   "/sky-images/1-golden-sunrise.jpg",
   "/sky-images/2-bright-morning.jpg",
