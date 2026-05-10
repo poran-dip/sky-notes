@@ -10,4 +10,21 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return;
+
+          if (id.includes("react-dom") || id.includes("react/")) {
+            return "vendor-react";
+          }
+
+          const pkg = id.split("node_modules/")[1].split("/")[0];
+          return `vendor-${pkg}`;
+        },
+      },
+    },
+    chunkSizeWarningLimit: 300,
+  },
 });

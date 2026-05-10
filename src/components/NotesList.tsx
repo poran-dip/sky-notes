@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { Note } from "@/types/notes";
 import NoteCard from "./NoteCard";
 import NotesListHeader from "./NotesListHeader";
@@ -19,7 +19,7 @@ const NotesList = () => {
     localStorage.setItem("sky-notes-sort-key", key);
   };
 
-  const addNote = (title?: string, content?: string) => {
+  const addNote = useCallback((title?: string, content?: string) => {
     const newNote: Note = {
       id: crypto.randomUUID(),
       title,
@@ -31,7 +31,7 @@ const NotesList = () => {
       localStorage.setItem("sky-notes", JSON.stringify(next));
       return next;
     });
-  };
+  }, []);
 
   const updateNote = (updated: Note) => {
     setNotes((prev) => {
@@ -67,6 +67,16 @@ const NotesList = () => {
       setNotes(JSON.parse(storedNotes) as Note[]);
     }
   }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get("share_title") ?? "";
+    const content = params.get("share_text") ?? "";
+    if (title || content) {
+      addNote(title, content);
+      window.history.replaceState({}, "", "/");
+    }
+  }, [addNote]);
 
   useEffect(() => {
     const interval = setInterval(() => tick((n) => n + 1), 15000);

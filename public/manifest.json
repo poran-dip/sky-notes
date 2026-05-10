@@ -42,6 +42,16 @@
       "form_factor": "narrow"
     }
   ],
+  "share_target": {
+    "action": "/?share-target",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
   "theme_color": "#80a1de",
   "background_color": "#80a1de",
   "display": "standalone",
